@@ -290,7 +290,7 @@ export default function App() {
               className={`badge ${appearHelper('appear--pop')}`}
             >
               <BrandierWebMark theme="dark" size={18} />
-              <span>Websites On Your Own Desire · Commercial Production Studio</span>
+              <span>Websites On Your Desire · Brandier Studio</span>
             </div>
 
             {/* Two Masked H1 Headline Lines */}
@@ -315,7 +315,7 @@ export default function App() {
               </span>
             </h1>
 
-            {/* Lede */}
+            {/* Short, Punchy Lede */}
             <p
               style={
                 {
@@ -326,7 +326,7 @@ export default function App() {
               onAnimationEnd={(e) => e.currentTarget.classList.add('is-in')}
               className={`lede ${appearHelper('appear--soft')}`}
             >
-              Directed by Anas Mehboob — designing flagship websites, commercial films, and high-converting digital experiences for brands in Pakistan and worldwide.
+              Directed by Anas Mehboob — flagship websites &amp; commercial films built to scale.
             </p>
 
             {/* Hero Actions — Short Crisp Liquid-Glass Buttons with Official Website Logos */}
@@ -395,7 +395,7 @@ export default function App() {
           </div>
         </main>
 
-        {/* Serious, Architectural 3-Stat Hero Footer Bar */}
+        {/* Crisp, Concise 3-Stat Hero Footer Bar */}
         <footer className="stats">
           {/* Stat 1 */}
           <div
@@ -404,7 +404,7 @@ export default function App() {
             className={`stat ${appearHelper('appear--stat')}`}
           >
             <BrandierWebMark theme={theme} size={22} />
-            <span>60+ bespoke websites &amp; commercial films delivered</span>
+            <span>60+ Websites &amp; Commercials</span>
           </div>
 
           {/* Stat 2 */}
@@ -414,7 +414,7 @@ export default function App() {
             className={`stat ${appearHelper('appear--stat')}`}
           >
             <BrandierStudioHexMark theme={theme} size={20} />
-            <span>92% faster turnaround than traditional agencies</span>
+            <span>92% Faster Studio Delivery</span>
           </div>
 
           {/* Stat 3 */}
@@ -424,7 +424,7 @@ export default function App() {
             className={`stat ${appearHelper('appear--stat')}`}
           >
             <BrandierTvLogo size={22} />
-            <span>12+ Pakistani &amp; global brands scaled across Web &amp; TV</span>
+            <span>12+ Pakistani &amp; Global Brands</span>
           </div>
         </footer>
       </div>

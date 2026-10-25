@@ -600,6 +600,33 @@ body.menu-open .burger span:nth-child(3) {
   text-align: center;
   max-width: var(--copy-max);
   width: 100%;
+  padding: 20px 24px;
+  border-radius: 32px;
+}
+
+/* Soft radial contrast cushion behind hero text so bright wave particles never wash out small text */
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: -28px -36px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 68% 64% at 50% 52%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.46) 52%,
+    transparent 100%
+  );
+  filter: blur(8px);
+}
+
+html[data-theme="light"] .hero-copy::before {
+  background: radial-gradient(
+    ellipse 68% 64% at 50% 52%,
+    rgba(248, 247, 244, 0.86) 0%,
+    rgba(248, 247, 244, 0.58) 55%,
+    transparent 100%
+  );
 }
 
 .badge {
@@ -608,16 +635,24 @@ body.menu-open .burger span:nth-child(3) {
   gap: 8px;
   margin-bottom: 20px;
   padding: 9px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 9999px;
-  background: var(--badge-bg);
-  color: var(--badge-text);
+  background: rgba(8, 10, 18, 0.82);
+  color: #ffffff;
   font-size: var(--badge);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.01em;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="light"] .badge {
+  background: rgba(15, 15, 20, 0.9);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .badge-star {
@@ -634,6 +669,15 @@ body.menu-open .burger span:nth-child(3) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.92),
+    0 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+html[data-theme="light"] .hero h1 {
+  text-shadow:
+    0 2px 16px rgba(255, 255, 255, 0.95),
+    0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .headline-line {
@@ -642,7 +686,6 @@ body.menu-open .burger span:nth-child(3) {
   padding: 0.06em 0.15em 0.14em;
 }
 
-.hero h1 em,
 .serif-italic {
   font-family: "Instrument Serif", "Times New Roman", Times, serif;
   font-style: italic;
@@ -653,17 +696,42 @@ body.menu-open .burger span:nth-child(3) {
 }
 
 .hero h1 em {
+  font-family: "Instrument Serif", "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.08em;
+  letter-spacing: -0.025em;
+  color: #e0e7ff;
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.95),
+    0 0 18px rgba(99, 102, 241, 0.45);
   animation: in-em 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.72s both;
 }
 
+html[data-theme="light"] .hero h1 em {
+  color: #312e81;
+  text-shadow: none;
+}
+
 .lede {
-  max-width: var(--lede-max);
+  max-width: 560px;
   margin-top: 16px;
-  color: var(--muted);
-  font-size: var(--lede);
-  font-weight: 400;
-  line-height: 1.55;
-  letter-spacing: -0.015em;
+  color: #f4f6fb;
+  font-size: clamp(15px, 1.12vw, 17px);
+  font-weight: 450;
+  line-height: 1.62;
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.98),
+    0 1px 3px rgba(0, 0, 0, 0.96);
+}
+
+html[data-theme="light"] .lede {
+  color: #111827;
+  font-weight: 500;
+  text-shadow:
+    0 1px 10px rgba(255, 255, 255, 0.95),
+    0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .hero-actions {
@@ -689,16 +757,28 @@ body.menu-open .burger span:nth-child(3) {
   gap: 24px;
   padding: 0 max(var(--stats-x), 96px) var(--stats-y) var(--stats-x);
   padding-bottom: max(var(--stats-y), env(safe-area-inset-bottom));
-  color: var(--stat);
+  color: #f4f6fb;
+}
+
+html[data-theme="light"] .stats {
+  color: #18181b;
 }
 
 .stat {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   font-size: var(--stat-size);
-  letter-spacing: -0.015em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   white-space: nowrap;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.95),
+    0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+html[data-theme="light"] .stat {
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
 }
 
 /* Entrance Motion */
