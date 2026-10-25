@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" style="background:#000000;color:#ffffff">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var currentFetch = typeof window.fetch === 'function' ? window.fetch.bind(window) : undefined;
+          var ownDesc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          var protoDesc = Object.getOwnPropertyDescriptor(Window.prototype, 'fetch');
+          var canDefine = !ownDesc || ownDesc.configurable !== false;
+          if (canDefine && currentFetch) {
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function () {
+                return currentFetch;
+              },
+              set: function (nextFetch) {
+                if (typeof nextFetch === 'function') {
+                  currentFetch = nextFetch;
+                }
+              },
+            });
+          }
+          if (protoDesc && protoDesc.configurable !== false && !protoDesc.set && !protoDesc.writable) {
+            Object.defineProperty(Window.prototype, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function () {
+                return currentFetch;
+              },
+              set: function (nextFetch) {
+                if (typeof nextFetch === 'function') {
+                  currentFetch = nextFetch;
+                }
+              },
+            });
+          }
+        } catch (_) {}
+
+        window.addEventListener(
+          'error',
+          function (event) {
+            var msg = String((event && event.message) || '');
+            var file = String((event && event.filename) || '');
+            if (
+              msg.indexOf('Cannot set property fetch') !== -1 ||
+              file.indexOf('chrome-extension://') === 0
+            ) {
+              event.stopImmediatePropagation();
+              event.preventDefault();
+            }
+          },
+          true
+        );
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brandier Web — Websites On Your Own Desire &amp; AI Advertising Studio</title>
+    <meta name="description" content="Brandier Web by Brandier Studio (brandierstudio.online) — Custom Websites On Your Own Desire, Next-Gen AI UGC Advertising, and Cinematic Motion Graphics." />
+    <meta property="og:title" content="Brandier Web — Websites On Your Own Desire &amp; AI Advertising Studio" />
+    <meta property="og:description" content="Deploy bespoke, high-converting websites on your own desire alongside Hollywood-grade AI advertising and motion graphics." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&family=Instrument+Serif:ital@1&family=Syne:wght@500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body style="background:#000;color:#fff">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

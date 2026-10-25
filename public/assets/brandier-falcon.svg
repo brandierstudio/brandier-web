@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <linearGradient id="falconWingDark" x1="20" y1="20" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="48%" stop-color="#C8D4F0"/>
+      <stop offset="100%" stop-color="#6B7896"/>
+    </linearGradient>
+    <linearGradient id="falconAccent" x1="65" y1="70" x2="185" y2="195" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="45%" stop-color="#6366F1"/>
+      <stop offset="80%" stop-color="#D946EF"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer Swept Primary Wing -->
+  <path d="M32 44C78 46 132 64 176 102C196 119 208 139 212 158C194 143 170 132 142 128C114 124 82 128 52 142C68 118 72 88 60 64L32 44Z" fill="url(#falconWingDark)"/>
+  <!-- Secondary Aerodynamic Wing Feather -->
+  <path d="M56 152C88 136 124 134 156 144C176 150 192 162 202 178C178 172 150 172 122 180C98 186 78 198 64 214C66 190 64 170 56 152Z" fill="url(#falconAccent)"/>
+  <!-- Falcon Head & Razor Beak Crest -->
+  <path d="M114 28C146 28 174 44 190 68C196 77 200 88 198 98C188 89 176 84 162 84C149 84 138 89 130 97C134 74 128 48 114 28Z" fill="url(#falconWingDark)"/>
+  <!-- Precision Falcon Eye Cutout -->
+  <polygon points="154,56 172,62 160,68" fill="#050508"/>
+</svg>

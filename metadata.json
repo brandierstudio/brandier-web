@@ -1,0 +1,6 @@
+{
+  "name": "Brandier Web & AI Studio",
+  "description": "Websites On Your Own Desire & Next-Gen AI Advertising Studio by Brandier Studio (brandierstudio.online).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
