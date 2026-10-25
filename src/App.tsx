@@ -10,6 +10,7 @@ import { PortfolioShowcase } from './components/PortfolioShowcase';
 import { ClientReviewsSection } from './components/ClientReviewsSection';
 import { PricingAndDesireBuilder } from './components/PricingAndDesireBuilder';
 import { AboutAndFaq } from './components/AboutAndFaq';
+import { WebSystemBlogSection } from './components/WebSystemBlogSection';
 import { ContactSection } from './components/ContactSection';
 import { buildWhatsAppUrl, CONTACT_INFO } from './utils/pricingAndContact';
 import { Sun, Moon } from 'lucide-react';
@@ -27,7 +28,7 @@ export default function App() {
   const [prefilledBudget, setPrefilledBudget] = useState<string>('$950 (Growth Package)');
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Sync theme attribute on <html>, <body>, and dynamic browser tab Favicon
+  // Sync theme attribute on <html>, <body>, and keep the transparent black-stem Brandier Web favicon active
   useEffect(() => {
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
@@ -45,10 +46,7 @@ export default function App() {
 
     const faviconEl = document.getElementById('dynamic-favicon') as HTMLLinkElement | null;
     if (faviconEl) {
-      faviconEl.href =
-        theme === 'dark'
-          ? '/favicon.png'
-          : '/assets/brandier-web-light-mark.png';
+      faviconEl.href = './favicon.png?v=5';
     }
   }, [theme]);
 
@@ -188,7 +186,7 @@ export default function App() {
           aria-hidden="true"
         />
 
-        {/* Header — Strict 3-Zone Top Bar Contract */}
+        {/* Header — Top Bar with Liquid-Glass ON/OFF Theme Switch at the Very Top */}
         <header className="header">
           {/* Zone 1: Brandier Web Transparent Logo Lockup */}
           <a
@@ -243,18 +241,44 @@ export default function App() {
               Pricing
             </a>
             <a
-              href="#faqs"
+              href="#system-blog"
               onClick={() => setMenuOpen(false)}
               style={{ '--d': '0.48s' } as React.CSSProperties}
               onAnimationEnd={(e) => e.currentTarget.classList.add('is-in')}
               className={`nav-pill ${appearHelper('appear--scale')}`}
             >
-              About
+              Blog
             </a>
           </nav>
 
-          {/* Zone 3: Primary Short Liquid-Glass CTA + Mobile Burger */}
+          {/* Zone 3: Top-Bar Liquid-Glass ON/OFF Theme Switch + Primary CTA + Mobile Burger */}
           <div className="header-right flex items-center justify-end gap-2.5">
+            <button
+              type="button"
+              role="switch"
+              aria-checked={theme === 'light'}
+              aria-label={theme === 'dark' ? 'Switch to Light Mode (ON)' : 'Switch to Night Mode (OFF)'}
+              onClick={toggleTheme}
+              style={{ '--d': '0.30s' } as React.CSSProperties}
+              onAnimationEnd={(e) => e.currentTarget.classList.add('is-in')}
+              className={`theme-switch ${appearHelper('appear--scale')}`}
+            >
+              <span className="theme-switch-track" aria-hidden="true">
+                <Moon className="w-3 h-3 text-indigo-300 opacity-80" />
+                <Sun className="w-3 h-3 text-amber-300 opacity-80" />
+                <span className="theme-switch-thumb">
+                  {theme === 'dark' ? (
+                    <Moon className="w-3 h-3" />
+                  ) : (
+                    <Sun className="w-3 h-3" />
+                  )}
+                </span>
+              </span>
+              <span className="theme-switch-label hidden sm:inline">
+                {theme === 'dark' ? 'Night' : 'Light'}
+              </span>
+            </button>
+
             <a
               href="#start"
               style={{ '--d': '0.34s' } as React.CSSProperties}
@@ -329,7 +353,7 @@ export default function App() {
               Directed by Anas Mehboob — flagship websites &amp; commercial films built to scale.
             </p>
 
-            {/* Hero Actions — Short Crisp Liquid-Glass Buttons with Official Website Logos */}
+            {/* Hero Actions — Short Crisp Liquid-Glass Buttons (Light/Dark Button Removed from Main Hero per Request) */}
             <div className="hero-actions">
               <a
                 href="#pricing"
@@ -355,9 +379,9 @@ export default function App() {
                 rel="noopener noreferrer"
                 style={{ '--d': '1.12s' } as React.CSSProperties}
                 onAnimationEnd={(e) => e.currentTarget.classList.add('is-in')}
-                className={`btn btn-ghost ${appearHelper('appear--side')}`}
+                className={`btn btn-dark-glass ${appearHelper('appear--side')}`}
               >
-                <BrandierStudioHexMark theme={theme} size={18} />
+                <BrandierStudioHexMark theme="dark" size={18} />
                 <span>Main Website</span>
               </a>
 
@@ -372,25 +396,6 @@ export default function App() {
                 <BrandierTvLogo size={18} />
                 <span>Brandier TV</span>
               </a>
-
-              <button
-                type="button"
-                onClick={toggleTheme}
-                aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Night Mode'}
-                style={{ '--d': '1.20s' } as React.CSSProperties}
-                onAnimationEnd={(e) => e.currentTarget.classList.add('is-in')}
-                className={`btn btn-ghost ${appearHelper('appear--side')}`}
-              >
-                {theme === 'dark' ? (
-                  <>
-                    <Sun className="w-4 h-4 text-amber-300" /> Light
-                  </>
-                ) : (
-                  <>
-                    <Moon className="w-4 h-4 text-indigo-600" /> Night
-                  </>
-                )}
-              </button>
             </div>
           </div>
         </main>
@@ -452,6 +457,12 @@ export default function App() {
       />
 
       <AboutAndFaq theme={theme} />
+
+      {/* Dedicated End-of-Page Blog Section Explaining Our Full AI + Bespoke Web System */}
+      <WebSystemBlogSection
+        theme={theme}
+        onSelectForQuote={(serviceLabel) => handleJumpToQuote(serviceLabel)}
+      />
 
       <ContactSection
         theme={theme}

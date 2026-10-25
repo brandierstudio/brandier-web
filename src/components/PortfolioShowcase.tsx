@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, MonitorSmartphone } from 'lucide-react';
+import { Play, ArrowUpRight } from 'lucide-react';
 import { BrandierWebMark, BrandierStudioHexMark, BrandierTvLogo } from './BrandLogos';
 
 interface PortfolioShowcaseProps {
@@ -60,51 +60,11 @@ const OFFICIAL_VIDEOS: VideoCaseStudy[] = [
   },
 ];
 
-interface WebBlueprint {
-  id: string;
-  title: string;
-  domain: string;
-  styleTag: string;
-  summary: string;
-  metrics: string;
-}
-
-const WEB_BLUEPRINTS: WebBlueprint[] = [
-  {
-    id: 'wb-1',
-    title: 'Obsidian Liquid-Glass Flagship',
-    domain: 'B2B Tech & SaaS Platform',
-    styleTag: 'Single & Multi-Viewport Architecture',
-    summary:
-      'Full-bleed Brandier gradient wave hero, liquid-glass capsule navigation, Instrument Serif editorial accents, and instant calculators.',
-    metrics: '99.8 Lighthouse Score',
-  },
-  {
-    id: 'wb-2',
-    title: 'Alabaster & Obsidian Luxury Storefront',
-    domain: 'High-AOV E-Commerce Desire',
-    styleTag: 'Dual Light/Night Editorial Commerce',
-    summary:
-      'Interactive product inspection, embedded commercial reels, instant VIP concierge routing, and bespoke editorial typography.',
-    metrics: '+140% Checkout Conversion',
-  },
-  {
-    id: 'wb-3',
-    title: 'Global Creative & Broadcast Portal',
-    domain: 'Agency & Video Showreel Network',
-    styleTag: 'Interactive Showreel & Pricing Engine',
-    summary:
-      'Seamless integration of 8 commercial formats, live promo-code pricing matrix, and multi-channel lead dispatch.',
-    metrics: '60+ Campaigns Delivered',
-  },
-];
-
 export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
   theme,
   onSelectProjectForQuote,
 }) => {
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
-  const [selectedBlueprint, setSelectedBlueprint] = useState<string>('wb-1');
   const isDark = theme === 'dark';
 
   return (
@@ -119,10 +79,10 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <div>
             <div className={`text-xs font-medium mb-3 ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Selected Work &amp; Live Architectures · Proof of Impact
+              Selected Work &amp; Official Showreel · Proof of Impact
             </div>
             <h2 className="text-3xl sm:text-5xl font-medium tracking-tight leading-[1.12]">
-              Websites &amp; Commercials That{' '}
+              Commercials &amp; Campaigns That{' '}
               <span className="serif-italic">Set the Standard.</span>
             </h2>
           </div>
@@ -141,7 +101,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
               href="https://tv.brandierstudio.online/"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost"
+              className="btn btn-dark-glass"
             >
               <BrandierTvLogo size={18} />
               <span>Brandier TV</span>
@@ -149,94 +109,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
           </div>
         </div>
 
-        {/* Part 1: Interactive "Websites On Your Own Desire" Blueprints */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg sm:text-xl font-medium tracking-tight flex items-center gap-2.5">
-              <MonitorSmartphone className="w-5 h-5 text-sky-400" />
-              Interactive Web Desire Blueprints
-            </h3>
-            <span className={`text-xs hidden sm:inline ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-              Select any architecture to customize
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {WEB_BLUEPRINTS.map((bp) => {
-              const isSelected = selectedBlueprint === bp.id;
-              return (
-                <div
-                  key={bp.id}
-                  onClick={() => setSelectedBlueprint(bp.id)}
-                  className={`rounded-2xl border p-6 flex flex-col justify-between transition-all cursor-pointer ${
-                    isSelected
-                      ? isDark
-                        ? 'bg-zinc-900/95 border-sky-400/70 shadow-lg'
-                        : 'bg-white border-zinc-900 shadow-md'
-                      : isDark
-                      ? 'bg-zinc-950/80 border-white/12 hover:border-white/30'
-                      : 'bg-white/85 border-zinc-900/12 hover:border-zinc-900/30'
-                  }`}
-                >
-                  <div>
-                    <div
-                      className="rounded-xl p-4 mb-5 border border-white/15 relative overflow-hidden h-40 flex flex-col justify-between"
-                      style={{
-                        background:
-                          bp.id === 'wb-1'
-                            ? 'radial-gradient(circle at 75% 25%, rgba(56,189,248,0.34), rgba(99,102,241,0.28) 45%, rgba(244,114,182,0.18) 75%, #050508 95%)'
-                            : bp.id === 'wb-2'
-                            ? 'linear-gradient(135deg, #18181b 0%, #312e81 55%, #4c1d95 100%)'
-                            : 'linear-gradient(135deg, #090d16 0%, #1e1b4b 50%, #701a75 100%)',
-                      }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <BrandierWebMark theme="dark" size={24} />
-                          <span className="text-[11px] font-medium text-white/90 tracking-tight">
-                            {bp.domain}
-                          </span>
-                        </div>
-                        <BrandierStudioHexMark theme="dark" size={20} />
-                      </div>
-
-                      <div>
-                        <div className="text-xs text-sky-300/90 mb-0.5">{bp.styleTag}</div>
-                        <div className="text-sm font-semibold text-white tracking-tight">
-                          {bp.title}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className={`text-xs mb-2 ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>
-                      {bp.domain} · {bp.styleTag}
-                    </div>
-                    <h4 className="text-lg font-semibold tracking-tight mb-2">{bp.title}</h4>
-                    <p className={`text-xs leading-relaxed mb-4 ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                      {bp.summary}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-current/10 flex items-center justify-between gap-3">
-                    <span className="text-xs font-medium text-sky-400 truncate">{bp.metrics}</span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onSelectProjectForQuote(`Custom Web Architecture: ${bp.title}`);
-                      }}
-                      className="btn btn-ghost !h-8 !px-3.5 !text-xs shrink-0"
-                    >
-                      Customize →
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Part 2: 4 Official Brandier Studio Commercials */}
+        {/* Official Brandier Studio Commercials (Kept intact per user request) */}
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
             <h3 className="text-lg sm:text-xl font-medium tracking-tight">
@@ -248,15 +121,13 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {OFFICIAL_VIDEOS.map((video) => {
+            {OFFICIAL_VIDEOS.map((video, idx) => {
               const isPlaying = playingVideoId === video.id;
               return (
                 <div
                   key={video.id}
-                  className={`rounded-2xl border overflow-hidden flex flex-col justify-between transition-all ${
-                    isDark
-                      ? 'bg-zinc-950/90 border-white/14 hover:border-white/30'
-                      : 'bg-white border-zinc-900/12 hover:border-zinc-900/30 shadow-xs'
+                  className={`rounded-2xl overflow-hidden flex flex-col justify-between transition-all ${
+                    idx % 2 === 0 ? 'glass-card-dark' : 'glass-card-frosted'
                   }`}
                 >
                   <div className="relative aspect-video w-full overflow-hidden bg-black">
@@ -294,7 +165,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                             </div>
                             <div className="text-xs text-sky-300 mt-0.5">{video.metrics}</div>
                           </div>
-                          <span className="btn btn-ghost !h-8 !px-3.5 !text-xs shrink-0">
+                          <span className="btn btn-dark-glass !h-8 !px-3.5 !text-xs shrink-0">
                             Watch Film
                           </span>
                         </div>
@@ -303,16 +174,34 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
                   </div>
 
                   <div className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <p className={`text-xs leading-relaxed ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                    <p
+                      className={`text-xs leading-relaxed ${
+                        idx % 2 === 0
+                          ? 'text-zinc-300'
+                          : isDark
+                          ? 'text-zinc-300'
+                          : 'text-zinc-600'
+                      }`}
+                    >
                       {video.description}
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => onSelectProjectForQuote(`Campaign Style: ${video.title}`)}
-                      className="btn btn-ghost !h-9 !px-4 !text-xs shrink-0"
-                    >
-                      Similar Ad
-                    </button>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => onSelectProjectForQuote(`Campaign Style: ${video.title}`)}
+                        className="btn btn-ghost !h-9 !px-4 !text-xs shrink-0"
+                      >
+                        Similar Ad
+                      </button>
+                      <a
+                        href="https://brandierstudio.online/brandier-blog.html#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-solid !h-9 !px-4 !text-xs shrink-0"
+                      >
+                        Get Quote <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               );
