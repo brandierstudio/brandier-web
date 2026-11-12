@@ -74,6 +74,54 @@ const WEB_DESIRE_TRACKS: WebDesireTrack[] = [
     metric: '99.8 Lighthouse Performance',
     surfaceType: 'dark',
   },
+  {
+  "index": "04",
+  "title": "3D & Scroll-Driven Websites",
+  "subtitle": "Immersive Brand Experiences",
+  "shortLine": "Interactive product stories, cinematic scroll motion, and responsive website design.",
+  "description": "We translate your brand and visual references into a focused website experience, with 3D scenes and motion chosen to support your message.",
+  "aiSystemNote": "Our process: discover your goals and references, prototype the experience, build, then test mobile usability and performance before launch.",
+  "deliverables": [
+    "Reference-led design and responsive layouts",
+    "3D scenes and scroll-driven storytelling",
+    "Accessible navigation and enquiry flows",
+    "Mobile and performance testing"
+  ],
+  "metric": "Designed around your brand",
+  "surfaceType": "frosted"
+},
+  {
+  "index": "05",
+  "title": "AI Agents & Chatbots",
+  "subtitle": "Business Knowledge, Made Useful",
+  "shortLine": "Assistants that answer questions, qualify enquiries, and guide customers to the next step.",
+  "description": "We scope an assistant around your business knowledge and real customer needs, with clear boundaries and human handoff.",
+  "aiSystemNote": "Our process: define tasks and knowledge, connect the tools you need, test conversations, and refine before launch.",
+  "deliverables": [
+    "Business knowledge and FAQ setup",
+    "Lead capture and qualification flows",
+    "Relevant tool and booking integrations",
+    "Human handoff and conversation testing"
+  ],
+  "metric": "Scoped to your workflow",
+  "surfaceType": "dark"
+},
+  {
+  "index": "06",
+  "title": "AI Automations",
+  "subtitle": "Connected Everyday Operations",
+  "shortLine": "Connect enquiries, follow-ups, CRM updates, and routine reporting with less manual work.",
+  "description": "We map repetitive work and connect your existing tools into practical workflows with clear review points.",
+  "aiSystemNote": "Our process: map the manual steps, agree triggers and actions, connect your tools, then test exceptions and handoffs.",
+  "deliverables": [
+    "Workflow discovery and scope",
+    "Form, inbox, and CRM connections",
+    "Follow-up and reporting workflows",
+    "Exception handling and human review"
+  ],
+  "metric": "Less repetitive admin",
+  "surfaceType": "frosted"
+}
 ];
 
 interface AiAdFormat {
@@ -495,9 +543,8 @@ export const ServicesAndFormats: React.FC<ServicesAndFormatsProps> = ({
                           System Blog ↓
                         </a>
                         <a
-                          href="https://brandierstudio.online/brandier-blog.html#"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href="#contact"
+                          onClick={() => onSelectServiceForQuote(track.title)}
                           className={`btn ${
                             track.surfaceType === 'dark' ? 'btn-solid' : 'btn-dark-glass'
                           } !h-8 !px-3.5 !text-xs`}

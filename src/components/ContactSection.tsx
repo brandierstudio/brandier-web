@@ -315,6 +315,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       <option value="AI UGC & Motion Graphics Commercials">
                         UGC &amp; Motion Graphics Commercials
                       </option>
+                      {!["Websites On Your Own Desire + AI Ads", "Custom Website Design (Brandier Web)", "AI UGC & Motion Graphics Commercials", "Full Studio Retainer", "3D Website Design", "AI Agents & Chatbots", "AI Automations"].includes(service) && <option value={service}>{service}</option>}
+                      <option value="3D Website Design">3D Website Design</option>
+                      <option value="AI Agents & Chatbots">AI Agents &amp; Chatbots</option>
+                      <option value="AI Automations">AI Automations</option>
                       <option value="Full Studio Retainer">Full Studio Retainer</option>
                     </select>
                   </div>
@@ -427,6 +431,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             >
               <BrandierTvLogo size={15} /> Brandier TV
             </a>
+            <a href="https://anas.brandierstudio.online/" target="_blank" rel="noopener noreferrer" className="btn btn-ghost !h-8 !px-3.5 !text-xs"><img src={theme === 'dark' ? '/assets/anas-mark-white.png' : '/assets/anas-mark.png'} width={18} height={18} alt="" />Anas Mehboob ↗</a>
             <a
               href="mailto:brandierstudio@gmail.com"
               className="btn btn-ghost !h-8 !px-3.5 !text-xs"
