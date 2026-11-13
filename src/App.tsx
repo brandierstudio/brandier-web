@@ -350,7 +350,7 @@ export default function App() {
               onAnimationEnd={(e) => e.currentTarget.classList.add('is-in')}
               className={`lede ${appearHelper('appear--soft')}`}
             >
-              Directed by Anas Mehboob — flagship websites &amp; commercial films built to scale.
+              Custom website design, landing pages &amp; interactive 3D experiences. Based in Karachi, collaborating with businesses worldwide.
             </p>
 
             {/* Hero Actions — Short Crisp Liquid-Glass Buttons (Light/Dark Button Removed from Main Hero per Request) */}
